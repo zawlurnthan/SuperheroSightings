@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head  th:replace="layout :: head"><title>Locations</title></head>
+
+<body>
+<div th:replace="layout :: navbar"></div>
+
+<!--List of Locations-->
+<div class="container">
+    <h3 class="text-center m-5">Location Directory</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Coordinate</th>
+            <th>Description</th>
+            <th>Detail</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="location : ${locations}">
+            <td th:text="${location.id}"></td>
+            <td th:text="${location.name}"></td>
+            <td th:text="${location.address}"></td>
+            <td th:text="${location.coordinate}"></td>
+            <td th:text="${location.description}"></td>
+            <td>
+                <a th:href="@{/locationDetail(id=${location.id})}"><button class="btn btn-warning btn-sm">Detail</button></a>
+            </td>
+            <td>
+                <a th:href="@{/updateLocation(id=${location.id})}" class="btn btn-info btn-sm">Update</a>
+            </td>
+            <td>
+                <a th:href="@{/deleteLocationConfirm(id=${location.id})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--Add Location-->
+<div class="container">
+    <h3 class="m-5 text-center">Enter New Location</h3>
+
+<!--    Error Warning-->
+    <div class="col-12 m-1 text-center"
+         th:if="${!errors.isEmpty()}">
+        <p class="alert alert-danger" th:each="error : ${errors}"
+           th:text="${error.message}">Error message</p>
+    </div>
+
+    <form th:action="@{/addLocation}" method="post">
+
+        <div class="form-group row p-3">
+            <label class="col-3 col-form-label">Name</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="Name" name="name" />
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="col-3 col-form-label">Address</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="Address" name="address" />
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="col-3 col-form-label">Coordinate</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="Coordinate" name="coordinate" />
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="col-3 col-form-label">Description</label>
+            <div class="col-9">
+                <textarea class="form-control" type="text" th:placeholder="Description" name="description"></textarea>
+            </div>
+        </div>
+
+        <div class="text-center m-3">
+            <button type="submit" class="btn btn-primary">Add Location</button>
+        </div>
+    </form>
+</div>
+
+<!--Footer-->
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: JavaScript"></div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head"><title>Sights</title></head>
+
+<body>
+<div th:replace="layout :: navbar"></div>
+
+<!--List of Sight-->
+<div class="container">
+    <h3 class="text-center m-5">Sight Directory</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Hero</th>
+            <th>Location</th>
+            <th>Detail</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sight : ${sights}">
+            <td th:text="${sight.id}"></td>
+            <td th:text="${sight.date}"></td>
+            <td th:text="${sight.hero.name}"></td>
+            <td th:text="${sight.location.name}"></td>
+            <td>
+                <a th:href="@{/sightDetail(id=${sight.id})}"><button class="btn btn-warning btn-sm">Detail</button></a>
+            </td>
+            <td>
+                <a th:href="@{/updateSight(id=${sight.id})}"><button class="btn btn-info btn-sm">Update</button></a>
+            </td>
+            <td>
+                <a th:href="@{/deleteSightConfirm(id=${sight.id})}"><button class="btn btn-danger btn-sm">Delete</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--Add Sighting-->
+<div class="container">
+    <h3 class="text-center m-5">Enter New Sight</h3>
+
+    <form th:action="@{/addSight}" method="post">
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Date</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="YYYY-MM-DD" name="date" />
+            </div>
+        </div>
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Hero</label>
+            <div class="col-9">
+                <select class="form-select" name="heroId">
+                    <option th:each="hero : ${heroes}"
+                            th:value="${hero.id}"
+                            th:text="${hero.name}">
+                        Hero Name
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">location</label>
+            <div class="col-9">
+                <select class="form-select" name="locationId">
+                    <option th:each="location : ${locations}"
+                            th:value="${location.id}"
+                            th:text="${location.name}">
+                        Location Name
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="text-center m-3">
+            <button type="submit" class="btn btn-primary">Add Sight</button>
+        </div>
+    </form>
+</div>
+
+<!--Footer-->
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: JavaScript"></div>
+
+</body>
+</html>

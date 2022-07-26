@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head">
+    <title>Delete Hero</title>
+</head>
+<body>
+
+    <nav th:replace="layout :: navbar"></nav>
+
+    <div class="container">
+
+        <form th:action="@{/deleteHero}" method="post">
+            <h5 class="m-5 text-center">Are you sure to delete Hero ID number <span th:text="${id}"></span>?</h5>
+
+            <div class="row mx-auto" style="width: 200px">
+                <div class="col-6 text-right">
+                    <a th:href="@{/deleteHero(id=${id})}" class="btn btn-danger btn-sm">Delete</a>
+
+                </div>
+                <div class="col-6 text-left">
+                    <a th:href="@{/heroes}" class="btn btn-primary btn-sm">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+<!--    &lt;!&ndash;Footer&ndash;&gt;-->
+<!--    <div th:replace="layout :: footer"></div>-->
+    <!-- JavaScript Bundle with Popper -->
+    <div th:replace="layout :: JavaScript"></div>
+
+</body>
+</html>

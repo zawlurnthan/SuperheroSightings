@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head">
+    <title>Home Page</title>
+</head>
+<body>
+
+<!--Navigation bar-->
+<nav th:replace="layout :: navbar"></nav>
+
+<!--List of Sight-->
+<div class="container">
+    <h3 class="text-center m-5">Newsfeed</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Hero</th>
+            <th>Location</th>
+            <th>Detail</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sight : ${sights}">
+            <td th:text="${sight.id}"></td>
+            <td th:text="${sight.date}"></td>
+            <td th:text="${sight.hero.name}"></td>
+            <td th:text="${sight.location.name}"></td>
+            <td>
+                <a th:href="@{/sightDetail(id=${sight.id})}"><button class="btn btn-warning btn-sm">Detail</button></a>
+            </td>
+            <td>
+                <a th:href="@{/updateSight(id=${sight.id})}"><button class="btn btn-info btn-sm">Update</button></a>
+            </td>
+            <td>
+                <a th:href="@{/deleteSight(id=${sight.id})}"><button class="btn btn-danger btn-sm">Delete</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--file path start after static folder-->
+<!--<img th:src="@{${sight.hero.getPhoto()}}" alt="Photo"  />-->
+<!--/imgFolder/imageFineName-->
+
+<!--&lt;!&ndash;Footer Section&ndash;&gt;-->
+<!--<div th:replace="layout :: footer"></div>-->
+<!-- JavaScript Bundle with Popper -->
+<div th:replace="layout :: JavaScript"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head"><title>New Location</title></head>
+
+<body>
+<div th:replace="layout :: navbar"></div>
+
+<div class="container">
+    <h3 class="m-5 text-center">Update Location</h3>
+    <form th:action="@{/updateLocation}" th:object="${location}" method="post">
+
+        <input type="hidden" th:field="${location.id}">
+
+        <div class="form-group row p-3">
+            <label class="col-3 col-form-label">Name</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="Name" th:field="${location.name}" />
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="col-3 col-form-label">Address</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="Address" th:field="${location.address}" />
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="col-3 col-form-label">Coordinate</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="Coordinate" th:field="${location.coordinate}" />
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="col-3 col-form-label">Description</label>
+            <div class="col-9">
+                <textarea class="form-control" type="text" th:placeholder="Description" th:field="${location.description}"></textarea>
+            </div>
+        </div>
+
+        <div class="row mx-auto" style="width: 200px">
+            <div class="col-6 text-right">
+                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+            </div>
+
+            <div class="col-6 text-left">
+                <button th:href="@{/locations}" class="btn btn-primary btn-sm">Cancel</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: JavaScript"></div>
+
+</body>
+</html>

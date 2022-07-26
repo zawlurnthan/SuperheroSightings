@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head"><title>Organization</title></head>
+
+<body>
+<div th:replace="layout :: navbar"></div>
+
+<div class="container">
+    <h3 class="text-center m-5">Update Organization</h3>
+
+    <form th:action="@{/updateOrganization}" th:object="${organization}" method="post">
+        <!--id is not required to show -->
+        <input type="hidden" th:field="${organization.id}">
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Name</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="Name" th:value="${organization.name}" />
+                <div th:if="${#fields.hasErrors('organization.name')}">
+                    <p th:each="error : ${#fields.errors('organization.name')}"
+                       class="alert alert-danger" th:text="${error}">
+                        Bad name </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Contact Info</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="Contact_Info" th:value="${organization.contactInfo}" />
+                <div th:if="${#fields.hasErrors('organization.contactInfo')}">
+                    <p th:each="error : ${#fields.errors('organization.contactInfo')}"
+                       class="alert alert-danger" th:text="${error}">
+                        Bad location </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Location</label>
+            <div class="col-9">
+                <select class="form-control" type="text" th:placeholder="Location" name="locationId" >
+                    <option th:each="location : ${locations}"
+                            th:value="${location.id}"
+                            th:text="${location.name}"
+                            th:selected="${organization.location.id == location.id}">
+                        Location Name
+                    </option>
+                </select>
+                <div th:if="${#fields.hasErrors('organization.location')}">
+                    <p th:each="error : ${#fields.errors('organization.location')}"
+                       class="alert alert-danger" th:text="${error}">
+                        Bad location </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Description</label>
+            <div class="col-9">
+                <textarea class="form-control" type="text" th:placeholder="Description" th:value="${organization.description}"></textarea>
+                <div th:if="${#fields.hasErrors('organization.description')}">
+                    <p th:each="error : ${#fields.errors('organization.description')}"
+                       class="alert alert-danger" th:text="${error}">
+                        Bad description</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Members</label>
+            <div class="col-9">
+                <select multiple class="form-control" type="text" th:placeholder="Hero" name="heroId">
+                    <option th:each="hero : ${heroes}"
+                            th:value="${hero.id}"
+                            th:text="${hero.name}"
+                            th:selected="${organization.members.contains(hero)}">
+                        Hero Name
+                    </option>
+                </select>
+                <div th:if="${#fields.hasErrors('organization.members')}">
+                    <p th:each="error : ${#fields.errors('organization.members')}"
+                       class="alert alert-danger" th:text="${error}">
+                        Bad hero </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mx-auto" style="width: 200px">
+            <div class="col-6 text-right">
+                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+            </div>
+
+            <div class="col-6 text-left">
+                <button th:href="@{/organizations}" class="btn btn-primary btn-sm">Cancel</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--Footer-->
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: JavaScript"></div>
+
+</body>
+</html>

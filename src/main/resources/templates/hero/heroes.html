@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"><title>Heroes</title></head>
+
+<body>
+    <!--Navigation Bar-->
+    <div th:replace="layout :: navbar"></div>
+
+    <!--List of Heroes-->
+    <div class="container">
+        <h3 class="text-center m-5">Hero Directory</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Power</th>
+                    <th>GoodGuy</th>
+                    <th>Description</th>
+                    <th>Detail</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="hero : ${heroes}">
+                    <td th:text="${hero.id}"></td>
+                    <td th:text="${hero.name}"></td>
+                    <td th:text="${hero.power}"></td>
+                    <td th:text="${hero.goodGuy}"></td>
+                    <td th:text="${hero.description}"></td>
+                    <td>
+                        <a th:href="@{/heroDetail(id=${hero.id})}"><button class="btn btn-warning btn-sm">Detail</button></a>
+                    </td>
+                    <td>
+                        <a th:href="@{/updateHero(id=${hero.id})}" class="btn btn-info btn-sm">Update</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/deleteHeroConfirm(id=${hero.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--Add Hero Form-->
+    <div class="container">
+        <h3 class="m-5 text-center">Enter New Hero</h3>
+
+<!--        Error display-->
+        <div class="col-12 m-1 text-center" th:if="${!errors.isEmpty()}">
+            <p class="alert alert-danger" th:each="error : ${errors}" th:text="${error.message}">Error message</p>
+        </div>
+
+        <form th:action="@{/addHero}" method="post" enctype="multipart/form-data">
+
+            <div class="form-group p-3 row">
+                <label class="col-3 col-form-label">Name</label>
+                <div class="col-9">
+                    <input class="form-control" type="text" th:placeholder="Name" name="name" />
+                </div>
+            </div>
+
+            <div class="from-group p-3 row">
+                <label class="col-3 col-form-label">Power</label>
+                <div class="col-9">
+                    <input class="form-control" type="text" th:placeholder="Power" name="power" />
+                </div>
+            </div>
+
+            <div class="from-group p-3 row">
+                <label class="col-3 col-form-label">Description</label>
+                <div class="col-9">
+                    <textarea class="form-control" type="text" th:placeholder="Description" name="description"></textarea>
+                </div>
+            </div>
+
+                <div class="from-group p-3 row">
+                    <label class="col-3 col-form-label">Photo</label>
+                    <div class="col-9">
+                        <input class="form-control" type="file" accept="image/png, image/jpeg" name="image">
+                    </div>
+                </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="goodGuy" th:value="true" checked>
+                <label class="form-check-label">
+                    Super Hero
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="goodGuy" th:value="false">
+                <label class="form-check-label">
+                    Super Villain
+                </label>
+            </div>
+
+            <div class="text-center m-3">
+                <button type="submit" class="btn btn-primary">Add Hero</button>
+            </div>
+        </form>
+    </div>
+
+    <!--Footer-->
+    <div th:replace="layout :: footer"></div>
+
+    <!--JavaScript section-->
+    <div th:replace="layout :: JavaScript"></div>
+
+</body>
+</html>

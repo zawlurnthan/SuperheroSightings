@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head"><title>New Sight</title></head>
+
+<body>
+<div th:replace="layout :: navbar"></div>
+
+<div class="container">
+    <h3 class="text-center m-5">Update Sight</h3>
+
+    <form th:action="@{/updateSight}" th:object="${sight}" method="post">
+
+        <input type="hidden" th:field="${sight.id}">
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Date</label>
+            <div class="col-9">
+                <input class="form-control" type="text" th:placeholder="YYYY-MM-DD" th:field="${sight.date}" />
+            </div>
+        </div>
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">Hero</label>
+            <div class="col-9">
+                <select class="form-select" name="heroId">
+                    <option th:each="hero : ${heroes}"
+                            th:value="${hero.id}"
+                            th:text="${hero.name}"
+                            th:selected="${sight.hero.id == hero.id}">
+                        Hero Name
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group p-3 row">
+            <label class="col-3 col-form-label">location</label>
+            <div class="col-9">
+                <select class="form-select" name="locationId">
+                    <option th:each="location : ${locations}"
+                            th:value="${location.id}"
+                            th:text="${location.name}"
+                            th:selected="${sight.location.id == location.id}">
+                        Location Name
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mx-auto" style="width: 200px">
+            <div class="col-6 text-right">
+                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+            </div>
+
+            <div class="col-6 text-left">
+                <button th:href="@{/sights}" class="btn btn-primary btn-sm">Cancel</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--Footer-->
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: JavaScript"></div>
+
+</body>
+</html>

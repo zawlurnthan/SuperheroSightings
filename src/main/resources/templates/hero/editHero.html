@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head"><title>New Hero</title></head>
+
+<body>
+
+<!--Navigation Bar-->
+<div th:replace="layout :: navbar"></div>
+
+    <div class="container" style="width: 600px">
+        <h3 class="m-5 text-center">Update Hero</h3>
+        <!--use enctype attribute for photo uploading-->
+        <form th:action="@{/updateHero}" th:object="${hero}" enctype="multipart/form-data" method="post">
+
+            <input type="hidden" th:field="${hero.id}">
+
+            <div class="form-group p-3 row">
+                <label class="col-3 col-form-label">Name</label>
+                <div class="col-9">
+                    <input class="form-control" type="text" name="name" th:placeholder="Name" th:value="${hero.name}" />
+
+<!--                    <div th:if="${#fields.hasErrors('hero.name')}">-->
+<!--                        <p th:each="error : ${#fields.errors('hero.name')}" class="alert alert-danger"-->
+<!--                           th:text="${error}"> Bad name </p>-->
+<!--                    </div>-->
+                </div>
+            </div>
+
+            <div class="from-group p-3 row">
+                <label class="col-3 col-form-label">Power</label>
+                <div class="col-9">
+                    <input class="form-control" type="text" name="power" th:placeholder="Power" th:value="${hero.power}" />
+<!--                    <div th:if="${#fields.hasErrors('hero.power')}">-->
+<!--                        <p th:each="error : ${#fields.errors('hero.power')}" class="alert alert-danger"-->
+<!--                           th:text="${error}"></p>-->
+<!--                    </div>-->
+                </div>
+            </div>
+
+            <div class="from-group p-3 row">
+                <label class="col-3 col-form-label">Description</label>
+                <div class="col-9">
+                    <textarea class="form-control" th:type="text" th:placeholder="Description" th:field="${hero.description}">Description</textarea>
+<!--                    <div th:if="${#fields.hasErrors('hero.description')}">-->
+<!--                        <p th:each="error : ${#fields.errors('hero.description')}" class="alert alert-danger"-->
+<!--                           th:text="${error}"></p>-->
+<!--                    </div>-->
+                </div>
+            </div>
+
+            <div class="from-group p-3 row">
+                <label class="col-3 col-form-label">Photo</label>
+                <div class="col-9">
+                    <input class="form-control" type="file" accept="image/png, image/jpeg" name="image">
+<!--                    <div th:if="${#fields.hasErrors('image')}">-->
+<!--                        <p th:each="error : ${#fields.errors('image')}" class="alert alert-danger"-->
+<!--                           th:text="${error}"></p>-->
+<!--                    </div>-->
+                </div>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="${hero.goodGuy}" th:value="true" checked>
+                <label class="form-check-label">
+                    Super Hero
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="${hero.goodGuy}" th:value="false">
+                <label class="form-check-label">
+                    Super Villain
+                </label>
+            </div>
+
+            <div class="row mx-auto mt-5" style="width: 200px">
+                <div class="col-6 text-right">
+                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                </div>
+
+                <div class="col-6 text-left">
+                    <button th:href="@{/heroes}" class="btn btn-primary btn-sm">Cancel</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: JavaScript"></div>
+
+</body>
+</html>
