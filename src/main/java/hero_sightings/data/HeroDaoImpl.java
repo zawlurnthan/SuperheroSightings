@@ -99,6 +99,7 @@ public class HeroDaoImpl implements HeroDao{
             hero.setGoodGuy(rs.getBoolean("goodGuy"));
             hero.setPower(rs.getString("power"));
             hero.setDescription(rs.getString("description"));
+            hero.setPhoto(rs.getString("photo"));
             return hero;
         }
     }

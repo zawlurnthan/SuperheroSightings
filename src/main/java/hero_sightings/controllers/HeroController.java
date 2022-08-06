@@ -43,7 +43,7 @@ public class HeroController {
     @PostMapping("/addHero")
     public String saveHero(Hero hero, @RequestParam("image")MultipartFile image) {
         // set file name
-        String fileName = image.getOriginalFilename();
+        String fileName = "/img/" + image.getOriginalFilename();
         hero.setPhoto(fileName);
         // save image into the img folder
         dao.saveImage(image);
@@ -94,7 +94,7 @@ public class HeroController {
             return "hero/editHero";
         }
         // set file path with folder and file name
-        String fileName = image.getOriginalFilename();
+        String fileName = "/img/" + image.getOriginalFilename();
         hero.setPhoto(fileName);
         // save image into the img folder
         dao.saveImage(image);

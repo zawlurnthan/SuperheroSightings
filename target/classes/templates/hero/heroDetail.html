@@ -5,58 +5,59 @@
 <body>
 <div th:replace="layout :: navbar"></div>
 
-<div class="container" style="width: 400px">
-    <h3 class="text-center my-5">Hero Detail</h3>
+<div class="container" style="width: 1200px">
+    <h3 class="text-center my-5" th:text="${hero.name} + ' Detail'" >Detail</h3>
 
-    <table class="table table-striped">
-        <tr class="row">
-            <td class="col-4 text-right">ID</td>
-            <td class="col-8 text-left">
-                <span th:text="${hero.id}">ID</span>
-            </td>
-        </tr>
-
-        <tr class="row">
-            <td class="col-4 text-right">Name</td>
-            <td class="col-8 text-left">
-                <span th:text="${hero.name}">Name</span>
-            </td>
-        </tr>
-
-        <tr class="row">
-            <td class="col-4 text-right">Power</td>
-            <td class="col-8 text-left">
-                <span th:text="${hero.power}">Power</span>
-            </td>
-        </tr>
-
-        <tr class="row">
-            <td class="col-4 text-right">Description</td>
-            <td class="col-8 text-left">
-                <span th:text="${hero.description}">Description</span>
-            </td>
-        </tr>
-
-        <tr class="row">
-            <td class="col-6 text-right">Photo</td>
-            <td class="col-6 text-left">
-                <img th:src="@{${hero.photo}}" alt="photo" />
-            </td>
-        </tr>
-    </table>
-
-        <div class="row m-5">
-            <div class="col-6 text-right">
-                <a th:href="@{/updateHero(id=${hero.id})}" class="btn btn-info btn-sm">Update</a>
-            </div>
-            <div class="col-6 text-left">
-                <a th:href="@{/deleteHeroConfirm(id=${hero.id})}" class="btn btn-danger btn-sm">Delete</a>
-            </div>
+    <div class="row">
+        <div class="col-6 px-5 m-3" >
+            <!--file path start after static folder-->
+            <!--/imgFolder/imageFineName-->
+            <img th:src="@{${hero.photo}}" alt="Photo" style="width: 500px; height: 600px;" />
         </div>
+
+        <table class="col-6 m-5 p-5" style="width: 400px">
+            <tr class="row p-3">
+                <td class="col-4 text-right">ID</td>
+                <td class="col-8 text-left">
+                    <span th:text="${hero.id}">ID</span>
+                </td>
+            </tr>
+
+            <tr class="row p-3">
+                <td class="col-4 text-right">Name</td>
+                <td class="col-8 text-left">
+                    <span th:text="${hero.name}">Name</span>
+                </td>
+            </tr>
+
+            <tr class="row p-3">
+                <td class="col-4 text-right">Power</td>
+                <td class="col-8 text-left">
+                    <span th:text="${hero.power}">Power</span>
+                </td>
+            </tr>
+
+            <tr class="row p-3">
+                <td class="col-4 text-right">Description</td>
+                <td class="col-8 text-left">
+                    <span th:text="${hero.description}">Description</span>
+                </td>
+            </tr>
+
+            <tr class="row px-5 py-3">
+                <td class="col-6 text-right">
+                    <a th:href="@{/updateHero(id=${hero.id})}" class="btn btn-info btn-sm">Update</a>
+                </td>
+                <td class="col-6 text-left">
+                    <a th:href="@{/deleteHeroConfirm(id=${hero.id})}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <!--&lt;!&ndash;Footer&ndash;&gt;-->
-<!--<div th:replace="layout :: footer"></div>-->
+<div th:replace="layout :: footer"></div>
 <div th:replace="layout :: JavaScript"></div>
 
 </body>
