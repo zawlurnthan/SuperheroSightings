@@ -83,9 +83,7 @@ public class HeroDaoImpl implements HeroDao{
             // get file path with filename
             Path path = Paths.get(pathStr + imageFile.getOriginalFilename());
             Files.write(path, bytes);
-        } catch (IOException e) {
-            System.out.println("Image's required!");
-        }
+        } catch (IOException e) {}
     }
 
     // convert data from database into Hero object

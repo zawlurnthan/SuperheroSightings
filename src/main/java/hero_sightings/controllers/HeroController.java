@@ -42,10 +42,11 @@ public class HeroController {
 
     @PostMapping("/addHero")
     public String saveHero(Hero hero, @RequestParam("image")MultipartFile image) {
+        System.out.println("Photo: " + hero.getPhoto());
         // set file name
         String fileName = "/img/" + image.getOriginalFilename();
         hero.setPhoto(fileName);
-        // save image into the img folder
+        //save image into the img folder
         dao.saveImage(image);
 
         Validator validate = Validation.buildDefaultValidatorFactory().getValidator();
@@ -89,17 +90,15 @@ public class HeroController {
     }
 
     @PostMapping("/updateHero")
-    public String editHero(@Valid Hero hero, @RequestParam("image")MultipartFile image, BindingResult result) {
+    public String editHero(@Valid Hero hero, BindingResult result, @RequestParam("image")MultipartFile image) {
         if (result.hasErrors()) {
-            return "hero/editHero";
+            return "redirect:hero/editHero";
         }
         // set file path with folder and file name
         String fileName = "/img/" + image.getOriginalFilename();
         hero.setPhoto(fileName);
         // save image into the img folder
         dao.saveImage(image);
-
-        // update hero
         dao.updateHero(hero);
         return "redirect:/heroes";
     }

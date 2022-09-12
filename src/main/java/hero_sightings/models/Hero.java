@@ -5,21 +5,21 @@ import javax.validation.constraints.Size;
 
 public class Hero {
     private int id;
-//    @NotBlank(message = "First name must not be empty.")
-//    @Size(max = 25, message = "Name must be less than 25 characters.")
+    @NotBlank(message = "First name can't not be empty.")
+    @Size(max = 25, message = "Name must be less than 25 characters.")
     private String name;
 
     private boolean goodGuy;
 
-//    @NotBlank(message = "Power must not be empty.")
-//    @Size(max = 25, message = "Power must be less than 25 characters.")
+    @NotBlank(message = "Power can't be empty.")
+    @Size(max = 25, message = "Power must be less than 25 characters.")
     private String power;
 
-//    @Size(max = 200, message = "Description must be less than 200 characters.")
+    @Size(max = 200, message = "Description must be less than 200 characters.")
     private String description;
 
-//    @Size(max = 60, message = "Photo name must be less than 60 characters, " +
-//            "\nand file size should not be grater than 1024KB.")
+    @Size(max = 60, message = "Photo name must be less than 60 characters, " +
+            "\nand file size should not be grater than 1024KB.")
     private String photo;
 
     public Hero() {

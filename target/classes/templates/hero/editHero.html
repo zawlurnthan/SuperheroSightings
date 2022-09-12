@@ -10,31 +10,33 @@
 
     <div class="container" style="width: 600px">
         <h3 class="m-5 text-center">Update Hero</h3>
+
         <!--use enctype attribute for photo uploading-->
         <form th:action="@{/updateHero}" th:object="${hero}" enctype="multipart/form-data" method="post">
-
             <input type="hidden" th:field="${hero.id}">
 
             <div class="form-group p-3 row">
                 <label class="col-3 col-form-label">Name</label>
                 <div class="col-9">
-                    <input class="form-control" type="text" name="name" th:placeholder="Name" th:value="${hero.name}" />
+                    <input class="form-control" type="text" name="name" th:placeholder="Name" th:field="${hero.name}" />
 
 <!--                    <div th:if="${#fields.hasErrors('hero.name')}">-->
 <!--                        <p th:each="error : ${#fields.errors('hero.name')}" class="alert alert-danger"-->
 <!--                           th:text="${error}"> Bad name </p>-->
 <!--                    </div>-->
+<!--                    <span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="${hero.name}"></span>-->
                 </div>
             </div>
 
             <div class="from-group p-3 row">
                 <label class="col-3 col-form-label">Power</label>
                 <div class="col-9">
-                    <input class="form-control" type="text" name="power" th:placeholder="Power" th:value="${hero.power}" />
+                    <input class="form-control" type="text" name="power" th:placeholder="Power" th:field="${hero.power}" />
 <!--                    <div th:if="${#fields.hasErrors('hero.power')}">-->
 <!--                        <p th:each="error : ${#fields.errors('hero.power')}" class="alert alert-danger"-->
 <!--                           th:text="${error}"></p>-->
 <!--                    </div>-->
+                    <span style="color: red" th:if="${#fields.hasErrors('power')}" th:errors="${hero.power}"></span>
                 </div>
             </div>
 
@@ -46,6 +48,7 @@
 <!--                        <p th:each="error : ${#fields.errors('hero.description')}" class="alert alert-danger"-->
 <!--                           th:text="${error}"></p>-->
 <!--                    </div>-->
+<!--                    <span class="alert alert-danger" th:if="${#fields.hasErrors('description')}" th:errors="${hero.description}"></span>-->
                 </div>
             </div>
 
@@ -57,6 +60,7 @@
 <!--                        <p th:each="error : ${#fields.errors('image')}" class="alert alert-danger"-->
 <!--                           th:text="${error}"></p>-->
 <!--                    </div>-->
+<!--                    <span class="alert alert-danger" th:if="${#fields.hasErrors('photo')}" th:errors="${hero.photo}"></span>-->
                 </div>
             </div>
 

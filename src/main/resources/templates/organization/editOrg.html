@@ -17,11 +17,11 @@
             <label class="col-3 col-form-label">Name</label>
             <div class="col-9">
                 <input class="form-control" type="text" th:placeholder="Name" th:value="${organization.name}" />
-                <div th:if="${#fields.hasErrors('organization.name')}">
-                    <p th:each="error : ${#fields.errors('organization.name')}"
-                       class="alert alert-danger" th:text="${error}">
-                        Bad name </p>
-                </div>
+<!--                <div th:if="${#fields.hasErrors('organization.name')}">-->
+<!--                    <p th:each="error : ${#fields.errors('organization.name')}"-->
+<!--                       class="alert alert-danger" th:text="${error}">-->
+<!--                        Bad name </p>-->
+<!--                </div>-->
             </div>
         </div>
 
@@ -29,11 +29,11 @@
             <label class="col-3 col-form-label">Contact Info</label>
             <div class="col-9">
                 <input class="form-control" type="text" th:placeholder="Contact_Info" th:value="${organization.contactInfo}" />
-                <div th:if="${#fields.hasErrors('organization.contactInfo')}">
-                    <p th:each="error : ${#fields.errors('organization.contactInfo')}"
-                       class="alert alert-danger" th:text="${error}">
-                        Bad location </p>
-                </div>
+<!--                <div th:if="${#fields.hasErrors('organization.contactInfo')}">-->
+<!--                    <p th:each="error : ${#fields.errors('organization.contactInfo')}"-->
+<!--                       class="alert alert-danger" th:text="${error}">-->
+<!--                        Bad location </p>-->
+<!--                </div>-->
             </div>
         </div>
 
@@ -48,11 +48,11 @@
                         Location Name
                     </option>
                 </select>
-                <div th:if="${#fields.hasErrors('organization.location')}">
-                    <p th:each="error : ${#fields.errors('organization.location')}"
-                       class="alert alert-danger" th:text="${error}">
-                        Bad location </p>
-                </div>
+<!--                <div th:if="${#fields.hasErrors('organization.location')}">-->
+<!--                    <p th:each="error : ${#fields.errors('organization.location')}"-->
+<!--                       class="alert alert-danger" th:text="${error}">-->
+<!--                        Bad location </p>-->
+<!--                </div>-->
             </div>
         </div>
 
@@ -60,11 +60,11 @@
             <label class="col-3 col-form-label">Description</label>
             <div class="col-9">
                 <textarea class="form-control" type="text" th:placeholder="Description" th:value="${organization.description}"></textarea>
-                <div th:if="${#fields.hasErrors('organization.description')}">
-                    <p th:each="error : ${#fields.errors('organization.description')}"
-                       class="alert alert-danger" th:text="${error}">
-                        Bad description</p>
-                </div>
+<!--                <div th:if="${#fields.hasErrors('organization.description')}">-->
+<!--                    <p th:each="error : ${#fields.errors('organization.description')}"-->
+<!--                       class="alert alert-danger" th:text="${error}">-->
+<!--                        Bad description</p>-->
+<!--                </div>-->
             </div>
         </div>
 
@@ -79,11 +79,11 @@
                         Hero Name
                     </option>
                 </select>
-                <div th:if="${#fields.hasErrors('organization.members')}">
-                    <p th:each="error : ${#fields.errors('organization.members')}"
-                       class="alert alert-danger" th:text="${error}">
-                        Bad hero </p>
-                </div>
+<!--                <div th:if="${#fields.hasErrors('organization.members')}">-->
+<!--                    <p th:each="error : ${#fields.errors('organization.members')}"-->
+<!--                       class="alert alert-danger" th:text="${error}">-->
+<!--                        Bad hero </p>-->
+<!--                </div>-->
             </div>
         </div>
 
