@@ -75,18 +75,18 @@ public class Organization {
         this.members = members;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Organization that)) return false;
-
-        if (getId() != that.getId()) return false;
-        if (!getName().equals(that.getName())) return false;
-        if (!getLocation().equals(that.getLocation())) return false;
-        if (!getContactInfo().equals(that.getContactInfo())) return false;
-        if (!getDescription().equals(that.getDescription())) return false;
-        return getMembers() != null ? getMembers().equals(that.getMembers()) : that.getMembers() == null;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Organization that)) return false;
+//
+//        if (getId() != that.getId()) return false;
+//        if (!getName().equals(that.getName())) return false;
+//        if (!getLocation().equals(that.getLocation())) return false;
+//        if (!getContactInfo().equals(that.getContactInfo())) return false;
+//        if (!getDescription().equals(that.getDescription())) return false;
+//        return getMembers() != null ? getMembers().equals(that.getMembers()) : that.getMembers() == null;
+//    }
 
     @Override
     public int hashCode() {

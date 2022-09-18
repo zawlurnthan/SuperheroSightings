@@ -42,7 +42,6 @@ public class HeroController {
 
     @PostMapping("/addHero")
     public String saveHero(Hero hero, @RequestParam("image")MultipartFile image) {
-        System.out.println("Photo: " + hero.getPhoto());
         // set file name
         String fileName = "/img/" + image.getOriginalFilename();
         hero.setPhoto(fileName);

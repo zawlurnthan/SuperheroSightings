@@ -50,16 +50,16 @@ public class Sight {
         this.location = location;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Sight sight)) return false;
-
-        if (getId() != sight.getId()) return false;
-        if (!getDate().equals(sight.getDate())) return false;
-        if (!getHero().equals(sight.getHero())) return false;
-        return getLocation().equals(sight.getLocation());
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Sight sight)) return false;
+//
+//        if (getId() != sight.getId()) return false;
+//        if (!getDate().equals(sight.getDate())) return false;
+//        if (!getHero().equals(sight.getHero())) return false;
+//        return getLocation().equals(sight.getLocation());
+//    }
 
     @Override
     public int hashCode() {

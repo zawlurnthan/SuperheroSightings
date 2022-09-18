@@ -73,18 +73,18 @@ public class Hero {
         this.photo = photo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Hero hero)) return false;
-
-        if (getId() != hero.getId()) return false;
-        if (isGoodGuy() != hero.isGoodGuy()) return false;
-        if (!getName().equals(hero.getName())) return false;
-        if (!getPower().equals(hero.getPower())) return false;
-        if (!getDescription().equals(hero.getDescription())) return false;
-        return getPhoto() != null ? getPhoto().equals(hero.getPhoto()) : hero.getPhoto() == null;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Hero hero)) return false;
+//
+//        if (getId() != hero.getId()) return false;
+//        if (isGoodGuy() != hero.isGoodGuy()) return false;
+//        if (!getName().equals(hero.getName())) return false;
+//        if (!getPower().equals(hero.getPower())) return false;
+//        if (!getDescription().equals(hero.getDescription())) return false;
+//        return getPhoto() != null ? getPhoto().equals(hero.getPhoto()) : hero.getPhoto() == null;
+//    }
 
     @Override
     public int hashCode() {
