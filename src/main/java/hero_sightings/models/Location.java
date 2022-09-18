@@ -63,17 +63,17 @@ public class Location {
         this.description = description;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Location location)) return false;
-//
-//        if (getId() != location.getId()) return false;
-//        if (!getName().equals(location.getName())) return false;
-//        if (!getAddress().equals(location.getAddress())) return false;
-//        if (!getCoordinate().equals(location.getCoordinate())) return false;
-//        return getDescription().equals(location.getDescription());
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Location location)) return false;
+
+        if (getId() != location.getId()) return false;
+        if (!getName().equals(location.getName())) return false;
+        if (!getAddress().equals(location.getAddress())) return false;
+        if (!getCoordinate().equals(location.getCoordinate())) return false;
+        return getDescription().equals(location.getDescription());
+    }
 
     @Override
     public int hashCode() {

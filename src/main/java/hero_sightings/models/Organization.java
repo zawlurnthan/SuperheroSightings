@@ -75,18 +75,18 @@ public class Organization {
         this.members = members;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Organization that)) return false;
-//
-//        if (getId() != that.getId()) return false;
-//        if (!getName().equals(that.getName())) return false;
-//        if (!getLocation().equals(that.getLocation())) return false;
-//        if (!getContactInfo().equals(that.getContactInfo())) return false;
-//        if (!getDescription().equals(that.getDescription())) return false;
-//        return getMembers() != null ? getMembers().equals(that.getMembers()) : that.getMembers() == null;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Organization org)) return false;
+
+        if (getId() != org.getId()) return false;
+        if (!getName().equals(org.getName())) return false;
+        if (!getLocation().equals(org.getLocation())) return false;
+        if (!getContactInfo().equals(org.getContactInfo())) return false;
+        if (!getDescription().equals(org.getDescription())) return false;
+        return getMembers().equals(org.getMembers());
+    }
 
     @Override
     public int hashCode() {
@@ -95,7 +95,7 @@ public class Organization {
         result = 31 * result + getLocation().hashCode();
         result = 31 * result + getContactInfo().hashCode();
         result = 31 * result + getDescription().hashCode();
-        result = 31 * result + (getMembers() != null ? getMembers().hashCode() : 0);
+        result = 31 * result + getMembers().hashCode();
         return result;
     }
 }
