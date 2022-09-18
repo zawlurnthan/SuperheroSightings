@@ -61,7 +61,13 @@ public class OrganizationController {
 
         System.out.println("Array Length: " + memberIds.length);
 
-        List<Hero> heroes = Arrays.stream(memberIds).map(Integer::parseInt).map(x -> hDao.getHeroById(x)).toList();
+        List<Hero> heroes = new ArrayList<>();
+        for (String memberId : memberIds) {
+            int x = Integer.parseInt(memberId);
+            Hero heroById = hDao.getHeroById(x);
+            heroes.add(heroById);
+        }
+
         // set organization location and members
         organization.setLocation(lDao.getLocationById(locationId));
         organization.setMembers(heroes);
@@ -122,7 +128,13 @@ public class OrganizationController {
         List<Hero> heroes = new ArrayList<>();
 
         if (memberIds != null) {
-            heroes = Arrays.stream(memberIds).map(Integer::parseInt).map(x -> hDao.getHeroById(x)).toList();
+            List<Hero> list = new ArrayList<>();
+            for (String memberId : memberIds) {
+                int x = Integer.parseInt(memberId);
+                Hero heroById = hDao.getHeroById(x);
+                list.add(heroById);
+            }
+            heroes = list;
         } else {
             FieldError error = new FieldError("organization", "members", "Must include one member");
             result.addError(error);

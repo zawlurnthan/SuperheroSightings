@@ -53,7 +53,9 @@ public class Sight {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Sight sight)) return false;
+        if (!(o instanceof Sight)) return false;
+
+        Sight sight = (Sight) o;
 
         if (getId() != sight.getId()) return false;
         if (!getDate().equals(sight.getDate())) return false;

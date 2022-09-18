@@ -76,7 +76,9 @@ public class Hero {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Hero hero)) return false;
+        if (!(o instanceof Hero)) return false;
+
+        Hero hero = (Hero) o;
 
         if (getId() != hero.getId()) return false;
         if (isGoodGuy() != hero.isGoodGuy()) return false;

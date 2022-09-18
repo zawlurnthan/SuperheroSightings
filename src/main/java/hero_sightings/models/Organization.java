@@ -78,7 +78,9 @@ public class Organization {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Organization org)) return false;
+        if (!(o instanceof Organization)) return false;
+
+        Organization org = (Organization) o;
 
         if (getId() != org.getId()) return false;
         if (!getName().equals(org.getName())) return false;

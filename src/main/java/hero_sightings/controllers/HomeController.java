@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,7 +31,12 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model) {
-        List<Sight> sights = sDao.getAllSights().stream().limit(10).toList();
+        List<Sight> sights = new ArrayList<>();
+        long limit = 10;
+        for (Sight sight : sDao.getAllSights()) {
+            if (limit-- == 0) break;
+            sights.add(sight);
+        }
         model.addAttribute("sights", sights);
         return "index";
     }
