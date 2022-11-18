@@ -1,4 +1,4 @@
-Super Hero Sightings
+# Super Hero Sightings
 
 Application is a full stack web application built by Java, Spring Boot JDBC template, and MySQL database for the backend, HTML, CSS, Bootstrap, and Thymeleaf for the front end.
 
